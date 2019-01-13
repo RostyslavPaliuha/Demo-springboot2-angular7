@@ -1,0 +1,55 @@
+<div id="grid-component">
+  <div id="search">
+    <p id="search-p">Search:</p> <input id="search-input" #search (ngModel)="criteria" (keyup)="onKey($event)">
+  </div>
+
+  <div id="grid">
+    <ag-grid-angular
+      style="width: 100%; height: 50%;"
+      class="ag-theme-balham"
+      [rowData]="rowData "
+      [columnDefs]="columnDefs"
+      (cellClicked)="onCellClicked($event,content)"
+
+    >
+    </ag-grid-angular>
+
+    <ngb-pagination [collectionSize]="totalPages+'0'" (click)="onPagination($event.target)" [(page)]="page"
+                    [boundaryLinks]="false" [directionLinks]="false" ></ngb-pagination>
+  </div>
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <label for="empName">Name:</label>
+            <input id="empName" class="form-control" placeholder="{{employee.empName}}" name="empName">
+          </div>
+
+          <div class="input-group">
+            <label for="empActive">Active:</label>
+            <input id="empActive" class="form-control" placeholder="{{employee.empActive}}" name="empActive">
+          </div>
+
+          <div class="input-group">
+            <label for="empDepartment">Department:</label>
+            <input id="empDepartment" class="form-control" placeholder="{{employee.empDepartment.dpName}}"
+                   name="empDepartment">
+          </div>
+        </div>
+      </form>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="onUpdate($event)">Update</button>
+        <button type="button" class="btn btn-outline-dark" (click)="onDelete($event)">Delete</button>
+      </div>
+    </div>
+  </ng-template>
+</div>

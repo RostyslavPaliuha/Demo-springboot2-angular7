@@ -5,7 +5,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+/**Common spring data repo.
+ * */
 @Repository
 public interface EmployeePaginationRepository extends PagingAndSortingRepository<Employee, Long> {
 

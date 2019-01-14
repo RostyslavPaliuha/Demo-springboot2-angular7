@@ -15,8 +15,10 @@ import java.util.List;
 public class EmployeeCriteriaSearchRepository {
     @PersistenceContext
     private EntityManager entityManager;
-
-    public List<Employee> getEmployees(String criteria, Integer page) {
+/**
+ * Search palatable employees by criteria specified pattern.
+ * */
+    public List<Employee> searchEmployyes(String criteria, Integer page) {
         Session s = entityManager.unwrap(Session.class);
         Criteria c = s.createCriteria(Employee.class);
         c.setFirstResult(page==0?0:page*10-1);

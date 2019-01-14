@@ -1,14 +1,14 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-
-
+/**
+ * Department entity.
+ * */
 @Data
 @NoArgsConstructor
 @Entity
@@ -19,8 +19,8 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long dpID;
     private String dpName;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "department")
-    @JsonBackReference
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "department")
     private List<Employee> employees;
 
 }

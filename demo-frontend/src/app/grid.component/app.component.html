@@ -14,8 +14,8 @@
     >
     </ag-grid-angular>
 
-    <ngb-pagination [collectionSize]="totalPages+'0'" (click)="onPagination($event.target)" [(page)]="page"
-                    [boundaryLinks]="false" [directionLinks]="false" ></ngb-pagination>
+    <ngb-pagination class="d-flex justify-content-center" [collectionSize]="totalPages+'0'" (click)="onPagination($event.target)" [page]="page"
+                    [maxSize]="5" [rotate]="true" [ellipses]="true"></ngb-pagination>
   </div>
 
   <ng-template #content let-modal>
@@ -40,8 +40,7 @@
 
           <div class="input-group">
             <label for="empDepartment">Department:</label>
-            <input id="empDepartment" class="form-control" placeholder="{{employee.empDepartment.dpName}}"
-                   name="empDepartment">
+            <input id="empDepartment" class="form-control" placeholder="{{employee.empDepartment.dpName}}" name="empDepartment" >
           </div>
         </div>
       </form>

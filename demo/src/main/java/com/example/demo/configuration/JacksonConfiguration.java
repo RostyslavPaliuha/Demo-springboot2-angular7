@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class JacksonConfiguration {
-
+/**
+ * Common Jackson parser settings
+ * */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer addCustomBigDecimalDeserialization() {
         return jacksonObjectMapperBuilder -> {jacksonObjectMapperBuilder.featuresToDisable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
